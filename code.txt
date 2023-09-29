@@ -1,0 +1,53 @@
+python train.py --data data/test.yaml --cfg models/yolov5s_test.yaml --img-size 512 --workers 0
+
+
+python detect.py --weights animal_model2.pt --source ./predict_images/ --img-size 512
+
+
+python train.py --data data/test.yaml --cfg models/yolov5m_test.yaml --weights yolov5m.pt --img-size 512 --workers 0 --batch-size 13 --epochs 400
+
+
+python detect.py --weights animal_model_m400.pt --source ./predict_images/ --img-size 512
+
+
+python train.py --data data/candy.yaml --cfg models/yolov5m_candy.yaml --weights yolov5m.pt --img-size 512 --workers 0 --batch-size 12 --epochs 400
+
+
+python detect.py --weights candy_m400_last.pt --source ./predict_images/ --name candy_m400_last
+
+
+---------------------------------第一次訓練
+
+python train.py --data data/recycle.yaml --cfg models/yolov5m_recycle.yaml --weights yolov5m.pt --workers 0
+
+
+python detect.py --weights last.pt --source ./predict_images/
+
+---------------------------------第二次訓練
+
+python train.py --data data/recycle.yaml --cfg models/yolov5m_recycle.yaml --weights yolov5m.pt --workers 0
+
+python detect.py --weights result/train/exp/weights/best.pt --source ./predict_images/
+
+
+
+python train.py --data recycle2/data.yaml --cfg models/yolov5m_recycle.yaml --weights yolov5m.pt
+
+
+
+python train.py --data b.v2/data.yaml --cfg b.v2/yolov5m.yaml --weights yolov5m.pt
+
+
+
+python train.py --data test4/data.yaml --cfg test4/yolov5m.yaml --weights yolov5m.pt --name test4
+
+
+python train.py --data test6/data.yaml --cfg test6/yolov5m.yaml --weights test5/last.pt --name test6
+
+python detect.py --weight test4/best.pt --source "http://192.168.137.230:4747/video" --nosave
+
+
+python detect.py --weight runs/train/test5/weights/best.pt --source "http://192.168.191.199:4747/video" --nosave
+
+
+python detect.py --weight runs/train/test1/weights/best.pt --source testing_set/ --name test1

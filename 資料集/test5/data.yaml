@@ -1,0 +1,5 @@
+train: ./test5/train/
+val: ./test5/valid/
+
+nc: 3
+names: ['can', 'paper', 'plastic']
